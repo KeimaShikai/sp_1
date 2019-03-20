@@ -33,7 +33,18 @@ void container::change(int n)
 void container::change(int n, std::stack<double> in)
 {
     //delete n elements
-    for (int i = 0; i < n; ++i)
+    int counter = 0;
+    if (n > sample.size())
+    {
+        std::cout << "The number is too big!\n"
+            << "The program wiil delete all items in the stack!\n";
+        counter = sample.size();
+    }
+    else
+    {
+        counter = n;
+    }
+    for (int i = 0; i < counter; ++i)
         sample.pop();
     
     //add all elements from second stack
