@@ -11,13 +11,14 @@ private:
     std::stack<double> sample;
 
 public:
-    container();
-    ~container();
+    container() {}
+    ~container() {}
     void fill(const char *fName);
-    void change();
-    void change(int n, std::stack<double>& in);
+    void change(int n);
+    void change(int n, std::stack<double> in);
     void show();
     void show_iter();
+    std::stack<double> get_stack();
 };
 
 #endif
