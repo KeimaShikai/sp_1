@@ -16,7 +16,6 @@ list(APPEND HEADERS "Sources/hdr")
 
 #source files
 list(APPEND SOURCES "Sources/hdr/container.h")
-list(APPEND SOURCES "Sources/src/container.cpp")
 list(APPEND SOURCES "Sources/main.cpp")
 
 include_directories(${HEADERS})
