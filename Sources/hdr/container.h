@@ -1,4 +1,5 @@
 #include <stack>
+#include <vector>
 #include <iostream>
 #include <fstream>
 

@@ -5,10 +5,15 @@ void container::fill(const char *fName)
     //fill container with the data from file
     std::ifstream is(fName);
     if (!is.is_open())
+    {
         std::cout << "Can't open the '" << *fName << "' file!\n";
+        exit(0);
+    }
     else
+    {
         for(double d; is >> d;)
             sample.push(d);
+    }
     is.close();
 }
 
@@ -46,9 +51,9 @@ void container::change(int n, std::stack<double> in)
     }
     for (int i = 0; i < counter; ++i)
         sample.pop();
-    
+        
     //add all elements from second stack
-    for (int i = 0; i < in.size(); ++i)
+    while (in.size() != 0)
     {
         sample.push(in.top());
         in.pop();        
@@ -69,7 +74,19 @@ void container::show()
 
 void container::show_iter()
 {
-    //TODO output the stack via iterators???
+    //output the stack via iterators
+    //codemonkey was here//
+    std::stack<double> sTemp = sample;
+    std::vector<double> vTemp;
+    while (sTemp.size() != 0)
+    {
+        vTemp.push_back(sTemp.top());
+        sTemp.pop();
+    }
+    for (std::vector<double>::iterator it = vTemp.begin(); 
+            it != vTemp.end(); ++it)
+        std::cout << *it << " || ";
+    std::cout << std::endl;
 }
 
 std::stack<double> container::get_stack()
