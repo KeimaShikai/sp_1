@@ -5,8 +5,8 @@
 #include <iostream>
 
 
-template <class T1, class T2 = std::stack<double>>
-T2 converter(T1);
+template <class T1>
+std::stack<double> convert_to_stack(T1);
 
 void show(std::stack<double>);
 
@@ -34,20 +34,22 @@ int main()
     int n = 0;
     std::cout << "Input the number of items you want to delete: ";
     std::cin >> n;
-    sample1.change(n, converter(sample2.get_data()));
+    sample1.change(n, convert_to_stack(sample2.get_data()));
     //7
     std::cout << "Container A: ";
     show(sample1.get_data());
     std::cout << "Container B: ";
-    show(converter(sample2.get_data()));
+    show(convert_to_stack(sample2.get_data()));
     return 0;
 }
 
 
-template <class T1, class T2>
-T2 converter(T1 temp1)
+template <class T1>
+std::stack<double> convert_to_stack(T1 temp1)
 {
-    T2 temp2;
+    //convert container to stack
+    //technical task is above all//
+    std::stack<double> temp2;
     while (!temp1.empty())
     {
         temp2.emplace(temp1.front());
