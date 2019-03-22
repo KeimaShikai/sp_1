@@ -31,10 +31,13 @@ int main()
     container<std::queue<double>> sample2;
     sample2.fill("Files/for2");
     //6
-    int n = 0;
+    int n, index;
+    n = index = 0;
+    std::cout << "Input the number of the item after which you want to delete the sequence: ";
+    std::cin >> index;
     std::cout << "Input the number of items you want to delete: ";
     std::cin >> n;
-    sample1.change(n, convert_to_stack(sample2.get_data()));
+    sample1.change(n, index, convert_to_stack(sample2.get_data()));
     //7
     std::cout << "Container A: ";
     show(sample1.get_data());

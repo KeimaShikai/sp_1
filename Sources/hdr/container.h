@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
 #ifndef CONTAINER_H
@@ -16,7 +17,7 @@ public:
     ~container() {}
     void fill(const char *fName);
     void change(int n);
-    void change(int n, T1 in);
+    void change(int n, int index, T1 in);
     T1 get_data();
 };
 
@@ -59,22 +60,40 @@ void container<T1>::change(int n)
 }
 
 template <class T1>
-void container<T1>::change(int n, T1 in)
+void container<T1>::change(int n, int index, T1 in)
 {
     //delete n elements
     int counter = 0;
-    if (n > sample.size())
+    if (index < 0 && index > sample.size())
+    {
+        std::cout << "The index is out of range!\n";
+    }
+    else if ((index + n) > sample.size())
     {
         std::cout << "The number is too big!\n"
-            << "The program wiil delete all items in the stack!\n";
+                  << "The program wiil delete all items in the stack!\n";
         counter = sample.size();
     }
     else
     {
-        counter = n;
+        counter = index + n;
     }
-    for (int i = 0; i < counter; ++i)
-        sample.pop();
+
+    if (counter != 0)
+    {
+        std::vector<double> vTemp;
+        while (!sample.empty())
+        {
+            vTemp.emplace_back(sample.top());
+            sample.pop();
+        }
+        vTemp.erase(vTemp.begin() + index, vTemp.begin() + counter);
+        while (!vTemp.empty())
+        {
+            sample.emplace(vTemp.back());
+            vTemp.pop_back();
+        }
+    }
 
     //add all elements from second stack
     while (!in.empty())
