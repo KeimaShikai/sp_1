@@ -1,4 +1,4 @@
-#Second lab about STL
+# Second lab about STL
 
 You need cmake and make to build the program.
 
