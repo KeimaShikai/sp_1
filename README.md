@@ -1,4 +1,4 @@
-# Second lab about STL
+# System programming laboratory (STL)
 
 You need cmake and make to build the program.
 
